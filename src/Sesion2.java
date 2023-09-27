@@ -68,7 +68,7 @@ public class Sesion2 {
 
         // Tabla de multiplicar
 
-        System.out.println("Introduzca un número del 1 al 10/nSe mostrará la tabla de multiplicar de dicho número.");
+        System.out.println("Introduzca un número del 1 al 10.\nSe mostrará la tabla de multiplicar de dicho número.");
         numero = sc.nextInt();
 
         while(numero < 1 || numero > 10){

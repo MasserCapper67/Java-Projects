@@ -116,7 +116,6 @@ public class Sesion3 {
                     break;
                 case 5:
                     continuar = false;
-                    break;
             }
         }
     }

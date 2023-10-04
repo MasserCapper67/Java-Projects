@@ -2,15 +2,17 @@ import java.util.Scanner;
 
 public class Sesion3 {
     private static Scanner sc = new Scanner(System.in);
+    private static String green = "\u001B[32m"; // Uso el color verde para que el resultado sea más vistoso
+    private static String normal = "\u001B[0m";
 
-    public static int menu(int x) {
+    public static int menu() {
         System.out.println("Introduzca un número del 1 al 5: \nLas opciones son las siguientes: ");
         System.out.println("1. Dibujar un triángulo rectángulo ");
         System.out.println("2. Dibujar un cuadrado: ");
         System.out.println("3. Multiplicar dos números: ");
         System.out.println("4. Escribir una tabla de multiplicar: ");
         System.out.println("5. Finalizar la ejecución");
-        x = sc.nextInt();
+        int x = sc.nextInt();
         while (x < 1 || x > 5) {
             System.out.println("Introduzca un número válido: ");
             x = sc.nextInt();
@@ -38,7 +40,7 @@ public class Sesion3 {
     }
 
     public static void dibujarTriangulo(int base, char character){
-        System.out.println("Introduzca un número del 1 al 30: \nEl número representará la base de su triángulo.");
+        System.out.println("Introduzca un número del 5 al 30: \nEl número representará la base de su triángulo.");
         base = sc.nextInt();
         while(base < 5 || base > 30){
             System.out.println("Introduzca un número del 1 al 30: ");
@@ -69,41 +71,53 @@ public class Sesion3 {
         }
     }
 
-    public static int multiplicarIterativo(int num1, int num2){
+    public static int multiplicarIterativo() {
         System.out.println("Introduzca dos números enteros positivos: ");
-        num1 = sc.nextInt();
-        num2 = sc.nextInt();
+        int num1 = sc.nextInt();
+        int num2 = sc.nextInt();
 
-
-        while (num1 < 0 || num2 < 0){
+        while (num1 < 0 || num2 < 0) {
             System.out.println("Introduzca números correctos");
             num1 = sc.nextInt();
             num2 = sc.nextInt();
         }
+        System.out.print(num1 + " X " + num2 + " = ");
         return num1 * num2;
-
     }
 
-    public static void tablaMultiplicar(int num){
+
+    public static void tablaMultiplicar(){
         System.out.println("Introduzca un número entero. \nSe mostrará su tabla de multiplicar: ");
-        num = sc.nextInt();
+        int num = sc.nextInt();
 
         for (int j = 1; j <= 10; j++){
-            System.out.println(num + " X " + j + " = " + num * j);
+            System.out.println(num + " X " + j + " = " + green + num * j + normal);
         }
     }
 
     public static void main(String[] args) {
-        switch (menu(0)){
-            case 1:
-                dibujarTriangulo(0, '*');
-            case 2:
-                dibujarCuadrado(0,'*');
-            case 3:
-                multiplicarIterativo(0,0);
-            case 4:
-            case 5:
-        }
+        boolean continuar = true; // Bucle que ejecutará el menú indefinidamente
+        while (continuar) {
+            int opcion = menu();
 
+            switch (opcion) {
+                case 1:
+                    dibujarTriangulo(0, '*');
+                    break;
+                case 2:
+                    dibujarCuadrado(0, '*');
+                    break;
+                case 3:
+                    int resultado = multiplicarIterativo();
+                    System.out.println(green + resultado + normal);
+                    break;
+                case 4:
+                    tablaMultiplicar();
+                    break;
+                case 5:
+                    continuar = false;
+                    break;
+            }
+        }
     }
 }

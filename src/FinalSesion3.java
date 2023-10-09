@@ -60,13 +60,11 @@ public class Sesion3 {
     }
 
     public static int multiplicarIterativo(int x, int y) {
-        while (x < 0 || y < 0) {
-            System.out.println("Introduzca números correctos");
-            x = sc.nextInt();
-            y = sc.nextInt();
+        int resultado = 0;
+        for (int k = 0; k < y; k++){
+            resultado += x;
         }
-        System.out.print(x + " X " + y + " = ");
-        return x * y;
+        return resultado;
     }
 
     public static void tablaMultiplicar(int x){

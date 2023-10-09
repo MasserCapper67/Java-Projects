@@ -18,12 +18,12 @@ public class Sesion2 {
         }
         final char asterisco = '*';
 
-        for (int k = 0; k < numero; k++){
+        for (int k = 1; k <= numero; k++){
 
             for (int i = 0; i < k; i++){
                 System.out.print(asterisco + " ");
             };
-            System.out.println(asterisco);
+            System.out.println();
         }
 
         // Cuadrado
@@ -37,7 +37,7 @@ public class Sesion2 {
             System.out.println("Introduzca un número correcto: ");
             numero = sc.nextInt();
         }
-        for (int k = 0; k < numero; k++){
+        for (int k = 1; k <= numero; k++){
             for (int i = 0; i < numero; i++){
                 System.out.print(asterisco + "  ");
             }
@@ -74,7 +74,7 @@ public class Sesion2 {
         while(numero < 1 || numero > 10){
             System.out.println("Introduzca un número del 1 al 10");
             numero = sc.nextInt();
-            }
+        }
         for (int k = 1; k <= 10; k++){
             System.out.println(numero + " X " + k + " = " + (numero * k));
         }

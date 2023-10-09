@@ -12,8 +12,12 @@ public class Sesion3 {
         System.out.println("3. Multiplicar dos números: ");
         System.out.println("4. Escribir una tabla de multiplicar: ");
         System.out.println("5. Finalizar la ejecución");
+        System.out.println("6. Dibujar linea (recursivo)");
+        System.out.println("7. Dibujar triángulo (recursivo)");
+        System.out.println("8. Multiplicar dos números (recursivo)");
+        System.out.println("9. Tabla de multiplicar (recursivo)");
         int x = sc.nextInt();
-        while (x < 1 || x > 5) {
+        while (x < 1 || x > 9) {
             System.out.println("Introduzca un número válido: ");
             x = sc.nextInt();
         }
@@ -56,13 +60,11 @@ public class Sesion3 {
     }
 
     public static int multiplicarIterativo(int x, int y) {
-        while (x < 0 || y < 0) {
-            System.out.println("Introduzca números correctos");
-            x = sc.nextInt();
-            y = sc.nextInt();
+        int resultado = 0;
+        for (int k = 0; k < y; k++){
+            resultado += x;
         }
-        System.out.print(x + " X " + y + " = ");
-        return x * y;
+        return resultado;
     }
 
     public static void tablaMultiplicar(int x){
@@ -107,6 +109,37 @@ public class Sesion3 {
                     break;
                 case 5:
                     continuar = false;
+                    break;
+                case 6:
+                    System.out.println("Introduzca un número: ");
+                    int chNum = sc.nextInt();
+                    System.out.println("Introduzca un carácter: ");
+                    char chChar = sc.next().charAt(0);
+                    chChar = leerCharacter(chChar);
+                    Sesion4.lineaRecursivo(chNum, chChar);
+                    break;
+                case 7:
+                    System.out.println("Introduzca la base de su triángulo: ");
+                    chNum = sc.nextInt();
+                    System.out.println("Introduzca un carácter: ");
+                    chChar = sc.next().charAt(0);
+                    chChar = leerCharacter(chChar);
+                    Sesion4.trianguloRecursivo(chNum, chChar);
+                    break;
+                case 8:
+                    System.out.println("Introduzca dos números: \nSe realizará la multiplicación de estos.");
+                    int x, y;
+                    x = sc.nextInt();
+                    y = sc.nextInt();
+                    int multi = Sesion4.multiplicarRecursivo(x, y);
+                    System.out.print(x + " X " + y + " = ");
+                    System.out.println(multi);
+                    break;
+                case 9:
+                    System.out.println("Introduzca un número: \nSe mostrará la tabla de multiplicar del mismo.");
+                    x = sc.nextInt();
+                    Sesion4.tablaMultiplicar(x);
+                    break;
             }
         }
     }

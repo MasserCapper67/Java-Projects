@@ -23,8 +23,15 @@ public class Sesion3 {
         }
         return x;
     }
+
+    public static boolean esLetra(char x){
+        return (x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z');
+    }
+    public static boolean esNumero(char x){
+        return (x >= '0' && x <= '9');
+    }
     public static char leerCharacter(char c){
-        while (Character.isLetterOrDigit(c)){
+        while (esLetra(c) || esNumero(c)){
             System.out.println("Caracter introducido incorrecto. \nInténtelo de nuevo: ");
             c = sc.next().charAt(0);
         }

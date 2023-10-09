@@ -41,8 +41,8 @@ public class Sesion1 {
         compare2 = sc.nextInt();
 
         if ((compare1 <= compare2) && (compare2 % compare1 == 0)){
-            System.out.println("El número 1 es menor o igual que el número 2 y este es múltiplo del primero");
-            }
-        else System.out.println("El número 1 no es menor o igual que el número 2 o este no es múltiplo del primero");
+            System.out.println("El número " + compare1 + " es menor o igual que el número " + compare2 + " y este es múltiplo del primero");
+        }
+        else System.out.println("El número " + compare1 + " no es menor o igual que el número " + compare2 + " o este no es múltiplo del primero");
     }
 }

@@ -1,82 +1,48 @@
 import java.util.Scanner;
 
-public class Sesion2 {
+public class Sesion1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int numero;
+        int choice; // Primera elección
+        int choice2; // Segunda elección
+        int compare1; // Tercera elección
+        int compare2; // Cuarta elección
 
-        // Triángulo
+        System.out.println("Seleccione un número del 1 al 5 para comenzar el programa: ");
 
-        System.out.println("Introduzca un número del 5 al 30");
-        System.out.println("Este representará la altura de su triángulo");
+        System.out.println("1. Dibujar un triángulo rectángulo ");
+        System.out.println("2. Dibujar un cuadrado: ");
+        System.out.println("3. Multiplicar dos números: ");
+        System.out.println("4. Escribir una tabla de multiplicar: ");
+        System.out.println("5. Finalizar la ejecución");
 
-        numero = sc.nextInt();
 
-        while (!(numero>5 && numero<30)){
-            System.out.println("Introduzca un número correcto: ");
-            numero = sc.nextInt();
+        choice = sc.nextInt();
+
+        while (!(choice >0 && choice <=5)){
+            System.out.println("Por favor, seleccione un número correcto");
+            choice = sc.nextInt();
         }
-        final char asterisco = '*';
+        System.out.println("Ha seleccionado la opción " + choice);
 
-        for (int k = 1; k <= numero; k++){
+        System.out.println("Ahora escoja un número entre 0 y 100: ");
+        choice2 = sc.nextInt();
 
-            for (int i = 0; i < k; i++){
-                System.out.print(asterisco + " ");
-            };
-            System.out.println();
+        while (!(choice2>=0 && choice2 <101)){
+            System.out.println("Por favor, seleccione un número correcto");
+            choice2 = sc.nextInt();
         }
+        System.out.println("Ha seleccionado el número " + choice2);
 
-        // Cuadrado
+        System.out.println("Elija dos números enteros. Estos se compararán y se mostrará el mayor de ellos: ");
+        System.out.println("Además, se comprobará si el segundo número es múltiplo del primero: ");
 
-        System.out.println("Introduzca un número entre 10 y 35");
-        System.out.println("Este corresponderá al lado del cuadrado que se va a dibujar");
+        compare1 = sc.nextInt();
+        compare2 = sc.nextInt();
 
-        numero = sc.nextInt();
-
-        while (numero < 10 || numero > 35){
-            System.out.println("Introduzca un número correcto: ");
-            numero = sc.nextInt();
+        if ((compare1 <= compare2) && (compare2 % compare1 == 0)){
+            System.out.println("El número " + compare1 + " es menor o igual que el número " + compare2 + " y este es múltiplo del primero");
         }
-        for (int k = 1; k <= numero; k++){
-            for (int i = 0; i < numero; i++){
-                System.out.print(asterisco + "  ");
-            }
-            System.out.println();
-        }
-
-        // Multiplicación con bucle
-
-        int num1, num2;
-        System.out.println("Introduzca dos números entre 0 y 20:");
-
-        num1 = sc.nextInt();
-
-        while (num1 < 0 || num1 > 20){
-            System.out.println("Por favor, introduzca un número entre 0 y 20:");
-            num1 = sc.nextInt();
-        }
-
-        System.out.println("Introduzca otro número entre 0 y 20:");
-        num2 = sc.nextInt();
-
-        while (num2 < 0 || num2 > 20){
-            System.out.println("Por favor, introduzca un número entre 0 y 20:");
-            num2 = sc.nextInt();
-        }
-        System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
-
-
-        // Tabla de multiplicar
-
-        System.out.println("Introduzca un número del 1 al 10.\nSe mostrará la tabla de multiplicar de dicho número.");
-        numero = sc.nextInt();
-
-        while(numero < 1 || numero > 10){
-            System.out.println("Introduzca un número del 1 al 10");
-            numero = sc.nextInt();
-        }
-        for (int k = 1; k <= 10; k++){
-            System.out.println(numero + " X " + k + " = " + (numero * k));
-        }
+        else System.out.println("El número " + compare1 + " no es menor o igual que el número " + compare2 + " o este no es múltiplo del primero");
     }
 }

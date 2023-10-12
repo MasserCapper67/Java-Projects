@@ -31,7 +31,7 @@ public class Sesion4 {
             lineaRecursivo(base, caracter);
         }
     }
-    
+
     public static int multiplicarRecursivo(int x, int y){
         if (x == 0 || y == 0){
             return 0;

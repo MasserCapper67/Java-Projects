@@ -24,6 +24,14 @@ public class Sesion3 {
         return x;
     }
 
+    public static int leerNumero(int a, int b){
+        int choice = sc.nextInt();
+        while (choice < a || choice > b){
+            System.out.println("Introduzca números correctos: ");
+            choice = sc.nextInt();
+        }
+        return choice;
+    }
     public static boolean esLetra(char x){
         return (x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z');
     }
@@ -39,25 +47,15 @@ public class Sesion3 {
     }
 
     public static void dibujarTriangulo(int base, char character){
-        while(base < 5 || base > 30){
-            System.out.println("Introduzca un número del 1 al 30: ");
-            base = sc.nextInt();
-        }
-        for (int k = 0; k < base; k++){
-
+        for (int k = 0; k <= base; k++){
             for (int i = 0; i < k; i++){
                 System.out.print(character + " ");
-            };
+            }
             System.out.println();
         }
     }
 
     public static void dibujarCuadrado(int lado, char character){
-        while(lado < 10 || lado > 35){
-            System.out.println("Introduzca un número del 10 al 35: ");
-            lado = sc.nextInt();
-        }
-
         for (int k = 0; k < lado; k++){
             for (int i = 0; i < lado; i++){
                 System.out.print(character + "  ");
@@ -88,15 +86,15 @@ public class Sesion3 {
             switch (opcion) {
                 case 1:
                     System.out.println("Introduzca un número del 5 al 30: \nEl número representará la base de su triángulo.");
-                    int base = sc.nextInt();
+                    int base = leerNumero(5, 30);
                     System.out.println("Introduzca un carácter. Se dibujará el tríangulo con este.");
-                    char caracter = sc.next().charAt(0);
-                    caracter = leerCharacter(caracter);
-                    dibujarTriangulo(base, caracter);
+                    char charA = sc.next().charAt(0);
+                    charA = leerCharacter(charA);
+                    dibujarTriangulo(base, charA);
                     break;
                 case 2:
                     System.out.println("Introduzca un número entre 10 y 35. \nEl número representará el lado de su cuadrado: ");
-                    int lado = sc.nextInt();
+                    int lado = leerNumero(10, 35);
                     System.out.println("Introduzca un carácter. Se dibujará el cuadrado con este.");
                     char caracterCuadrado = sc.next().charAt(0);
                     caracterCuadrado = leerCharacter(caracterCuadrado);
@@ -126,8 +124,8 @@ public class Sesion3 {
                     Sesion4.lineaRecursivo(chNum, chChar);
                     break;
                 case 7:
-                    System.out.println("Introduzca la base de su triángulo: ");
-                    chNum = sc.nextInt();
+                    System.out.println("Introduzca la base de su triángulo (entre 5 y 30): ");
+                    chNum = leerNumero(5, 30);
                     System.out.println("Introduzca un carácter: ");
                     chChar = sc.next().charAt(0);
                     chChar = leerCharacter(chChar);

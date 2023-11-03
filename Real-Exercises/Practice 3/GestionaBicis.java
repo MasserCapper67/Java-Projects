@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 
 public class GestionaBicis {
-    // Álvaro Bardají Robles bu0102
     // las pruebas las haremos sobre dos estacionamientos estacion1 y estacion2
     Scanner sc = new Scanner(System.in);
     private Usuario usuarioBici;

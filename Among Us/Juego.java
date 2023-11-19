@@ -84,11 +84,11 @@ public class Juego {
     }
 
     public void atacarTripulante() {
-        if (numTripulantes > 0) {
-            int eliminado;
-            do{
+        if (numTripulantes > 1) {
+            int eliminado = 0;
+            while (tripulacion[eliminado].getIdentificador() == impostor.getIdentificador()){
                 eliminado = aleatorio(0, numTripulantes);
-            }while (tripulacion[eliminado].getIdentificador() == impostor.getIdentificador());
+            }
             System.out.println("Ves al tripulante " + tripulacion[eliminado].getIdentificador() + ". Es tu oportunidad \nPresiona ENTER para asesinarlo:");
             Teclado.enter();
             System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣤⣤⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -118,19 +118,24 @@ public class Juego {
     }
 
     public void eliminarTripulante(int posicion) {
-        for (int i = posicion; i < numTripulantes - 1; i++){
-            tripulacion[i] = tripulacion[i + 1];
+        if (posicion == numTripulantes - 1){
+            tripulacion[numTripulantes - 1] = null;
+            numTripulantes--;
+        }else {
+            for (int i = posicion; i < numTripulantes - 1; i++){
+                tripulacion[i] = tripulacion[i + 1];
+            }
+            tripulacion[numTripulantes - 1] = null;
+            numTripulantes--;
         }
-        tripulacion[TOTAL_TRIPULANTES - 1] = null;
-        numTripulantes--;
         System.out.println("Quedan " + numTripulantes + " tripulantes vivos");
     }
 
     public void expulsarImpostor() {
-        int posicionImpostor;
-        for (posicionImpostor = 0; posicionImpostor < numTripulantes - 1; posicionImpostor++){
-            if (tripulacion[posicionImpostor].getIdentificador() == impostor.getIdentificador()){
-                continue;
+        int posicionImpostor = -1;
+        for (int i = 0; i < numTripulantes - 1; i++){
+            if (tripulacion[i].getIdentificador() == impostor.getIdentificador()){
+                posicionImpostor = i;
             }
         }
         if (posicionImpostor >= 0 && posicionImpostor < numTripulantes) {
@@ -140,27 +145,36 @@ public class Juego {
 
     public int expulsarSospechoso() {
         int decision = (int)(Math.random() * 4);
+        int idAux = 0;
         if (decision == 0){
             AsciiArt.noOneEjected();
             System.out.println("Tras un largo debate se ha decidido no expulsar a nadie");
             return -1;
         }else{
-            int expulsar = (int) (Math.random() * numTripulantes);
-            if (expulsar >= 0 && expulsar < numTripulantes && tripulacion[expulsar] != null) {
-                System.out.println("Se ha decidido expulsar de la nave al tripulante " + tripulacion[expulsar].getIdentificador() + " por sospechoso");
-                System.out.println(". 　　　。　　　　•　 　ﾟ　　。 　　.\n" +
-                        "\n" +
-                        "　　　.　　　 　　.　　　　　。　　 。　. 　\n" +
-                        "\n" +
-                        ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
-                        "\n" +
-                        "　　ﾟ　　 " + tripulacion[expulsar].getIdentificador() + " was not An Impostor.　 。　.\n" +
-                        "\n" +
-                        "　　'　　　     1 Impostor remain 　 　　。\n" +
-                        "\n" +
-                        "　　ﾟ　　　.　　　. ,　　　　.　 .");
-                eliminarTripulante(expulsar);
-                return tripulacion[expulsar].getIdentificador();
+            if (numTripulantes > 1){
+                int expulsar = (int) (Math.random() * numTripulantes);
+                while (expulsar < 0 || expulsar >= numTripulantes || tripulacion[expulsar] == null){
+                    expulsar = (int) (Math.random() * numTripulantes);
+                }
+                idAux = tripulacion[expulsar].getIdentificador();
+                if (tripulacion[expulsar] != null){
+                    System.out.println("Se ha decidido expulsar de la nave al tripulante " + tripulacion[expulsar].getIdentificador() + " por sospechoso");
+                    if (tripulacion[expulsar].getIdentificador() != impostor.getIdentificador() && tripulacion != null) {
+                        System.out.println(". 　　　。　　　　•　 　ﾟ　　。 　　.\n" +
+                                "\n" +
+                                "　　　.　　　 　　.　　　　　。　　 。　. 　\n" +
+                                "\n" +
+                                ".　　 。　　　　　 ඞ 。 . 　　 • 　　　　•\n" +
+                                "\n" +
+                                "　　ﾟ　　 " + tripulacion[expulsar].getIdentificador() + " was not An Impostor.　 。　.\n" +
+                                "\n" +
+                                "　　'　　　     1 Impostor remain 　 　　。\n" +
+                                "\n" +
+                                "　　ﾟ　　　.　　　. ,　　　　.　 .");
+                        eliminarTripulante(expulsar);
+                    }
+                    return idAux;
+                }
             }
         }
         return -1;

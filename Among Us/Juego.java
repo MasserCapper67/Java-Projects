@@ -112,8 +112,8 @@ public class Juego {
                     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠸⣷⣶⡶⠶⠶⠶⠖⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀");
             System.out.println("De pronto, el tripulante " + tripulacion[eliminado].getIdentificador() + " es atacado y eliminado");
             impostor.robarClave(tripulacion[eliminado]);
-            eliminarTripulante(eliminado);
             impostor.mostrarClaves();
+            eliminarTripulante(eliminado);
         }else System.out.println("No hay tripulantes para atacar");
     }
 

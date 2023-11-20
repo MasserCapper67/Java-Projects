@@ -17,7 +17,7 @@ public class Juego {
         this.claveReactor = new Clave(longitudClave);
         this.tripulacion = new Tripulante[TOTAL_TRIPULANTES];
 
-        int numeroImpostor = aleatorio(1, TOTAL_TRIPULANTES);
+        int numeroImpostor = aleatorio(1, TOTAL_TRIPULANTES + 1);
         for (int i = 0; i < TOTAL_TRIPULANTES; i++){
             int id = 100 + i;
             Clave claveDistorsionada = claveReactor.getDistorsionada();
@@ -181,7 +181,7 @@ public class Juego {
     }
 
     public void guardarEstadoNave(String ruta) {
-        File fileNave = new File("prueba1.txt");
+        File fileNave = new File(ruta + ".txt");
 
         try (PrintWriter pw = new PrintWriter(fileNave)){
             pw.println("Clave del reactor: " + claveReactor.toString());

@@ -19,7 +19,8 @@ public class EncryptLSB {
         try {
             image = ImageIO.read(imageFile);
             BufferedImage imageToEncrypt = GetImageToEncrypt(image);
-
+            Pixel[] pixels = GetPixelArray(imageToEncrypt);
+            String[] messageBinary = messageToBinary(message);
         }catch (IOException e) {
             e.getMessage();
         }
@@ -45,5 +46,25 @@ public class EncryptLSB {
             }
         }
         return pixels;
+    }
+    private static String[] messageToBinary(String message) {
+        int[] messageAscii = ConvertMessageToAscii(message);
+        String messageBinary = ConvertAsciiToBinary(messageAscii);
+    }
+
+    private static int[] ConvertMessageToAscii(String message) {
+        int[] messageAscii = new int[message.length()];
+        for (int i = 0; i < message.length(); i++) {
+            messageAscii[i] = (int) message.charAt(i);
+        }
+        return messageAscii;
+    }
+
+    private static String[] ConvertAsciiToBinary(int[] asciiValues) {
+        String[] messageBinary = new String[asciiValues.length];
+        for (int i = 0; i < asciiValues.length; i++) {
+            String binary = Integer.toBinaryString(asciiValues[i]);
+
+        }
     }
 }

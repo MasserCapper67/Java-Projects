@@ -36,7 +36,6 @@ public class TableroReinas {
         for (int columna = 0; columna < dimension; columna++) {
             if (movimientoValido(fila, columna)) {
                 ponerReina(fila, columna);
-                tablero[fila][columna] = 1;
 
                 backtracking(fila + 1);
 
